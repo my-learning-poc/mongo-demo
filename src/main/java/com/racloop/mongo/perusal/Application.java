@@ -1,17 +1,8 @@
 package com.racloop.mongo.perusal;
 
-import com.racloop.mongo.perusal.entity.AccountingEntity;
-import com.racloop.mongo.perusal.entity.LoanEntity;
-import com.racloop.mongo.perusal.entity.RpsEntity;
-import com.racloop.mongo.perusal.entity.TransactionEntity;
-import com.racloop.mongo.perusal.repository.AccountingRepository;
-import com.racloop.mongo.perusal.repository.LoanRepository;
-import com.racloop.mongo.perusal.repository.RpsRepository;
-import com.racloop.mongo.perusal.repository.TransactionRepository;
-import com.racloop.mongo.perusal.util.AccountingRandomDataGenerator;
-import com.racloop.mongo.perusal.util.LoanRandomDataGenerator;
-import com.racloop.mongo.perusal.util.RpsRandomDataGenerator;
-import com.racloop.mongo.perusal.util.TransactionRandomDataGenerator;
+import com.racloop.mongo.perusal.entity.*;
+import com.racloop.mongo.perusal.repository.*;
+import com.racloop.mongo.perusal.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -30,6 +21,8 @@ public class Application {
 	private TransactionRepository transactionRepository;
 	@Autowired
 	private AccountingRepository accountingRepository;
+	@Autowired
+	private LoanDSRepository loanDSRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -107,4 +100,24 @@ public class Application {
 //		};
 //
 //	}
+
+		/*
+
+		Disable comment to Generate data in MongodB for Collection "loan_ds"
+
+	*/
+
+	/*@Bean
+	public CommandLineRunner AccountingInsertData() {
+		return args -> {
+			for (int i = 0; i < 100; i++) {
+				List<LoanDataStoreEntity> entities = LoanDSRandomDataGenerator.generateData(99999);
+				loanDSRepository.saveAll(entities);
+
+			}
+
+		};
+
+	}*/
+
 }
